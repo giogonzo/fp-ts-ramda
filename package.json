@@ -1,0 +1,41 @@
+{
+  "name": "fp-ts-ramda",
+  "version": "0.1.0",
+  "description": "ramda API reimplemented with fp-ts",
+  "files": [
+    "lib"
+  ],
+  "main": "lib",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "prettier-write": "prettier **/*.ts --write",
+    "prettier-check": "prettier **/*.ts --list-different",
+    "dtslint": "dtslint dtslint",
+    "preversion": "npm run prettier-check && npm run dtslint && npm run test"
+  },
+  "keywords": [
+    "ramda",
+    "fp-ts",
+    "typescript"
+  ],
+  "author": "Giovanni Gonzaga <giovanni@buildo.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@types/ramda": "^0.26.12",
+    "dtslint": "github:gcanti/dtslint",
+    "fast-check": "^1.15.1",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "ramda": "^0.26.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "fp-ts": "^1.19.3"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  }
+}
