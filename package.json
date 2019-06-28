@@ -1,18 +1,29 @@
 {
   "name": "fp-ts-ramda",
-  "version": "0.1.0",
-  "description": "ramda API reimplemented with fp-ts",
+  "version": "0.0.0",
+  "description": "ramda reimplemented using fp-ts",
   "files": [
     "lib"
   ],
-  "main": "lib",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giogonzo/fp-ts-ramda.git"
+  },
+  "bugs": {
+    "url": "https://github.com/giogonzo/fp-ts-ramda/issues"
+  },
+  "homepage": "https://github.com/giogonzo/fp-ts-ramda",
   "scripts": {
-    "build": "tsc",
+    "clean": "rimraf lib",
+    "build": "npm run clean && tsc",
     "test": "npm run prettier-check && npm run dtslint && jest",
     "prettier-write": "prettier --write \"./{src,test,dtslint}/**/*.ts\"",
     "prettier-check": "prettier --list-different \"./{src,test,dtslint}/**/*.ts\"",
     "dtslint": "dtslint dtslint",
-    "preversion": "npm run test"
+    "preversion": "npm run test",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "ramda",
@@ -29,6 +40,7 @@
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
     "ramda": "^0.26.1",
+    "rimraf": "^2.6.3",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
   },
