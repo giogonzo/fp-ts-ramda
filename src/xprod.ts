@@ -8,6 +8,6 @@ function _xprod<A, B>(as: Array<A>, bs: Array<B>): Array<[A, B]> {
 
 export function xprod<A>(as: Array<A>): <B>(bs: Array<B>) => Array<[A, B]>;
 export function xprod<A, B>(as: Array<A>, bs: Array<B>): Array<[A, B]>;
-export function xprod(this: any, ...args: any): unknown {
+export function xprod(this: any, ...args: any): any {
   return curry(_xprod).apply(this, args);
 }
