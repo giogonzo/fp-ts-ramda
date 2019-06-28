@@ -8,11 +8,11 @@
   "main": "lib",
   "scripts": {
     "build": "tsc",
-    "test": "jest",
-    "prettier-write": "prettier **/*.ts --write",
-    "prettier-check": "prettier **/*.ts --list-different",
+    "test": "npm run prettier-check && npm run dtslint && jest",
+    "prettier-write": "prettier --write \"./{src,test,dtslint}/**/*.ts\"",
+    "prettier-check": "prettier --list-different \"./{src,test,dtslint}/**/*.ts\"",
     "dtslint": "dtslint dtslint",
-    "preversion": "npm run prettier-check && npm run dtslint && npm run test"
+    "preversion": "npm run test"
   },
   "keywords": [
     "ramda",

@@ -1,6 +1,6 @@
-import { comprehension } from "fp-ts/lib/Array";
-import { constTrue, tuple } from "fp-ts/lib/function";
-import { curry } from "./helpers/curry";
+import { comprehension } from 'fp-ts/lib/Array';
+import { constTrue, tuple } from 'fp-ts/lib/function';
+import { curry } from './helpers/curry';
 
 function _xprod<A, B>(as: Array<A>, bs: Array<B>): Array<[A, B]> {
   return comprehension([as, bs], constTrue, tuple);
