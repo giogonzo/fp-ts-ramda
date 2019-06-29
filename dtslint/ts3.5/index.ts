@@ -42,6 +42,8 @@ FR.always(new Date()); // $ExpectType Lazy<Date>
 
 FR.and(false, true); // $ExpectType boolean
 FR.and(false); // $ExpectType (b: boolean) => boolean
+
+R.and(0, true); // return type is `boolean`, while you get `0` at runtime
 FR.and(0, true); // $ExpectError
 
 // append
