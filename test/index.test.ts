@@ -46,4 +46,20 @@ describe('fp-ts-ramda', () => {
       )
     );
   });
+
+  it('always', () => {
+    fc.assert(fc.property(fc.anything(), v => JSONEqual(R.always(v)(), FR.always(v)())));
+  });
+
+  it('and', () => {
+    fc.assert(fc.property(fc.boolean(), fc.boolean(), (a, b) => R.and(a, b) === FR.and(a, b)));
+  });
+
+  it('append', () => {
+    fc.assert(
+      fc.property(fc.array(fc.anything()), fc.anything(), (as, a) =>
+        getArraySetoid(fromEquals(JSONEqual)).equals(R.append(a, as), FR.append(a, as))
+      )
+    );
+  });
 });
