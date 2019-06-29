@@ -41,7 +41,7 @@ describe('fp-ts-ramda', () => {
   it('adjust', () => {
     const f = (n: number) => n * 2;
     fc.assert(
-      fc.property(fc.nat(), fc.array(fc.integer()), (i, as) =>
+      fc.property(fc.integer(), fc.array(fc.integer()), (i, as) =>
         getArrayEq(fromEquals(strictEqual)).equals(R.adjust(i, f, as), FR.adjust(i, f, as))
       )
     );
