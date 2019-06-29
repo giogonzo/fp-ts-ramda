@@ -5,7 +5,7 @@ import { getOrElse } from 'fp-ts/lib/Option';
 
 function _adjust<A>(i: number, f: Endomorphism<A>, as: Array<A>): Array<A> {
   return pipe(
-    modifyAt(i >= 0 ? i : as.length + 1, f)(as),
+    modifyAt(i >= 0 ? i : as.length + i, f)(as),
     getOrElse(() => as)
   );
 }
