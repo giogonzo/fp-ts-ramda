@@ -1,9 +1,13 @@
 import { Endomorphism } from 'fp-ts/lib/function';
 import { modifyAt } from 'fp-ts/lib/Array';
-import { curry } from './helpers/curry';
+import { pipe } from 'fp-ts/lib/pipeable';
+import { getOrElse } from 'fp-ts/lib/Option';
 
 function _adjust<A>(i: number, f: Endomorphism<A>, as: Array<A>): Array<A> {
-  return modifyAt(i >= 0 ? i : as.length + 1, f)(as).getOrElse(as);
+  return pipe(
+    modifyAt(i >= 0 ? i : as.length + 1, f)(as),
+    getOrElse(() => as)
+  );
 }
 
 export function adjust(
@@ -14,6 +18,22 @@ export function adjust(
 };
 export function adjust<A>(i: number, f: Endomorphism<A>): (as: Array<A>) => Array<A>;
 export function adjust<A>(i: number, f: Endomorphism<A>, as: Array<A>): Array<A>;
-export function adjust(this: any, ...args: any): any {
-  return curry(_adjust).apply(this, args);
+export function adjust<A>(i: number, f?: Endomorphism<A>, as?: Array<A>): any {
+  if (f === undefined) {
+    return function(f: Endomorphism<A>, as?: Array<A>) {
+      if (as === undefined) {
+        return function(as: Array<A>) {
+          return _adjust(i, f, as);
+        };
+      } else {
+        return _adjust(i, f, as);
+      }
+    };
+  } else if (as === undefined) {
+    return function(as: Array<A>) {
+      return _adjust(i, f, as);
+    };
+  } else {
+    return _adjust(i, f, as);
+  }
 }
