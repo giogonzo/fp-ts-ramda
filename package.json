@@ -33,8 +33,10 @@
   "author": "Giovanni Gonzaga <giovanni@buildo.io>",
   "license": "MIT",
   "devDependencies": {
+    "@types/benchmark": "^1.0.31",
     "@types/jest": "^24.0.15",
     "@types/ramda": "^0.26.12",
+    "benchmark": "^2.1.4",
     "dtslint": "github:gcanti/dtslint",
     "fast-check": "^1.15.1",
     "jest": "^24.8.0",
@@ -45,7 +47,7 @@
     "typescript": "^3.5.2"
   },
   "dependencies": {
-    "fp-ts": "^1.19.3"
+    "fp-ts": "^2.0.0-rc.8"
   },
   "jest": {
     "preset": "ts-jest"

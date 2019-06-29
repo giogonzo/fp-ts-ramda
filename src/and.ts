@@ -1,10 +1,15 @@
 import { semigroupAll } from 'fp-ts/lib/Semigroup';
-import { curry } from './helpers/curry';
 
-const _and = semigroupAll.concat;
+const concat = semigroupAll.concat;
 
 export function and(a: boolean): (b: boolean) => boolean;
 export function and(a: boolean, b: boolean): boolean;
-export function and(this: any, ...args: any): any {
-  return curry(_and).apply(this, args);
+export function and(a: boolean, b?: boolean) {
+  if (b === undefined) {
+    return function(b: boolean) {
+      return concat(a, b);
+    };
+  } else {
+    return concat(a, b);
+  }
 }
