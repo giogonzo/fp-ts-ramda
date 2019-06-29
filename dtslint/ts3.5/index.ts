@@ -33,3 +33,22 @@ FR.adjust(1, (a: string) => a + a)(['a']); // $ExpectType string[]
 
 R.adjust(1)((a: string) => a + a)(['a']); // $ExpectError
 FR.adjust(1)((a: string) => a + a)(['a']); // $ExpectType string[]
+
+// always
+
+FR.always(new Date()); // $ExpectType Lazy<Date>
+
+// and
+
+FR.and(false, true); // $ExpectType boolean
+FR.and(false); // $ExpectType (b: boolean) => boolean
+
+R.and(0, true); // return type is `boolean`, while you get `0` at runtime
+FR.and(0, true); // $ExpectError
+
+// append
+
+FR.append(true, [false]); // $ExpectType boolean[]
+
+R.append(true)([1]); // doesn't error
+FR.append(true)([1]); // $ExpectError
