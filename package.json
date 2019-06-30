@@ -18,13 +18,14 @@
   "scripts": {
     "clean": "rimraf lib",
     "build": "npm run clean && tsc",
-    "test": "npm run prettier-check && npm run dtslint && jest",
+    "test": "npm run lint && npm run prettier-check && npm run dtslint && jest",
     "prettier-write": "prettier --write \"./{src,test,dtslint}/**/*.ts\"",
     "prettier-check": "prettier --list-different \"./{src,test,dtslint}/**/*.ts\"",
     "dtslint": "dtslint dtslint",
     "docs": "docs-ts",
     "preversion": "npm run test && npm run docs",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "lint": "tslint -p tsconfig.json src/*.ts"
   },
   "keywords": [
     "ramda",
@@ -46,6 +47,7 @@
     "ramda": "^0.26.1",
     "rimraf": "^2.6.3",
     "ts-jest": "^24.0.2",
+    "tslint": "^5.18.0",
     "typescript": "^3.5.2"
   },
   "dependencies": {
