@@ -14,7 +14,7 @@ parent: Modules
 
 # adjust (function)
 
-Same as https://ramdajs.com/docs/#adjust
+Same as [R.adjust](https://ramdajs.com/docs/#adjust)
 
 **Signature**
 

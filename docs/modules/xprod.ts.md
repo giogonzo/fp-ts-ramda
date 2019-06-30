@@ -14,7 +14,7 @@ parent: Modules
 
 # xprod (function)
 
-Same as https://ramdajs.com/docs/#xprod
+Same as [R.xprod](https://ramdajs.com/docs/#xprod)
 
 **Signature**
 

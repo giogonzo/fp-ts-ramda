@@ -14,7 +14,7 @@ parent: Modules
 
 # append (function)
 
-Same as https://ramdajs.com/docs/#append
+Same as [R.append](https://ramdajs.com/docs/#append)
 
 **Signature**
 

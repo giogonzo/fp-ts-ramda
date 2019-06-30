@@ -1,7 +1,7 @@
 import { constant } from 'fp-ts/lib/function';
 
 /**
- * Same as https://ramdajs.com/docs/#always
+ * Same as [R.always](https://ramdajs.com/docs/#always)
  *
  * @since 0.1.1
  */

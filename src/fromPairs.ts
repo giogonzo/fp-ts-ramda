@@ -3,7 +3,7 @@ import { fromFoldable } from 'fp-ts/lib/Record';
 import { getLastSemigroup } from 'fp-ts/lib/Semigroup';
 
 /**
- * Same as https://ramdajs.com/docs/#fromPairs
+ * Same as [R.fromPairs](https://ramdajs.com/docs/#fromPairs)
  *
  * @since 0.1.1
  */

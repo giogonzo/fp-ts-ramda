@@ -14,7 +14,7 @@ parent: Modules
 
 # toPairs (constant)
 
-Same as https://ramdajs.com/docs/#toPairs
+Same as [R.toPairs](https://ramdajs.com/docs/#toPairs)
 
 **Signature**
 

@@ -1,7 +1,7 @@
 import { takeRight } from 'fp-ts/lib/Array';
 
 /**
- * Similar to https://ramdajs.com/docs/#takeLast, but doesn't work with `string`s
+ * Similar to [R.takeLast](https://ramdajs.com/docs/#takeLast), but doesn't work with `string`s
  *
  * @since 0.1.2
  */

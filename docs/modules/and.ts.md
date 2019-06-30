@@ -14,7 +14,7 @@ parent: Modules
 
 # and (function)
 
-Similar to https://ramdajs.com/docs/#and but accepts only `boolean` values, thus will not work considering "truthy/falsy"ness.
+Similar to [R.and](https://ramdajs.com/docs/#and) but accepts only `boolean` values, thus will not work considering "truthy/falsy"ness.
 
 **Signature**
 

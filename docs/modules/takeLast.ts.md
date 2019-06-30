@@ -14,7 +14,7 @@ parent: Modules
 
 # takeLast (function)
 
-Similar to https://ramdajs.com/docs/#takeLast, but doesn't work with `string`s
+Similar to [R.takeLast](https://ramdajs.com/docs/#takeLast), but doesn't work with `string`s
 
 **Signature**
 
