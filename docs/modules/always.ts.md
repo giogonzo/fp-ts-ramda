@@ -19,7 +19,7 @@ Same as [R.always](https://ramdajs.com/docs/#always)
 **Signature**
 
 ```ts
-export const always = ...
+export const always: <A>(a: A) => () => A = ...
 ```
 
 Added in v0.1.1

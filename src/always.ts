@@ -5,4 +5,4 @@ import { constant } from 'fp-ts/lib/function';
  *
  * @since 0.1.1
  */
-export const always = constant;
+export const always: <A>(a: A) => () => A = constant;
