@@ -22,7 +22,8 @@
     "prettier-write": "prettier --write \"./{src,test,dtslint}/**/*.ts\"",
     "prettier-check": "prettier --list-different \"./{src,test,dtslint}/**/*.ts\"",
     "dtslint": "dtslint dtslint",
-    "preversion": "npm run test",
+    "docs": "docs-ts",
+    "preversion": "npm run test && npm run docs",
     "prepublish": "npm run build"
   },
   "keywords": [
@@ -37,6 +38,7 @@
     "@types/jest": "^24.0.15",
     "@types/ramda": "^0.26.12",
     "benchmark": "^2.1.4",
+    "docs-ts": "^0.1.0",
     "dtslint": "github:gcanti/dtslint",
     "fast-check": "^1.15.1",
     "jest": "^24.8.0",

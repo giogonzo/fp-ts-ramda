@@ -1,0 +1,23 @@
+---
+title: fromPairs.ts
+nav_order: 5
+parent: Modules
+---
+
+---
+
+<h2 class="text-delta">Table of contents</h2>
+
+- [fromPairs (constant)](#frompairs-constant)
+
+---
+
+# fromPairs (constant)
+
+Same as https://ramdajs.com/docs/#fromPairs
+
+**Signature**
+
+```ts
+export const fromPairs: <A, K extends string>(as: Array<[K, A]>) => Record<K, A> = ...
+```

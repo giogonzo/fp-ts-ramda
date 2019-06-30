@@ -1,5 +1,8 @@
 import { snoc } from 'fp-ts/lib/Array';
 
+/**
+ * Same as https://ramdajs.com/docs/#append
+ */
 export function append<A>(a: A): (as: Array<A>) => Array<A>;
 export function append<A>(a: A, as: Array<A>): Array<A>;
 export function append<A>(a: A, as?: Array<A>): any {

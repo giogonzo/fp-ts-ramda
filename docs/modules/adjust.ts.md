@@ -1,0 +1,30 @@
+---
+title: adjust.ts
+nav_order: 1
+parent: Modules
+---
+
+---
+
+<h2 class="text-delta">Table of contents</h2>
+
+- [adjust (function)](#adjust-function)
+
+---
+
+# adjust (function)
+
+Same as https://ramdajs.com/docs/#adjust
+
+**Signature**
+
+```ts
+export function adjust(
+  i: number
+): {
+  <A>(f: Endomorphism<A>, as: Array<A>): Array<A>;
+  <A>(f: Endomorphism<A>): (as: Array<A>) => Array<A>;
+};
+export function adjust<A>(i: number, f: Endomorphism<A>): (as: Array<A>) => Array<A>;
+export function adjust<A>(i: number, f: Endomorphism<A>, as: Array<A>): Array<A>; { ... }
+```

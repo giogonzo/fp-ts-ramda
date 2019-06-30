@@ -22,11 +22,9 @@ For some Ramda functions, 100% API compatibility is easy to obtain. For others (
 
 ### Currying
 
-All Ramda functions are "auto curried". Since an objective is to remain mostly API-compatible, translations must be curried too. This is a non-issue for `arity = 1` functions, where the main definition is exported directly (see e.g. `fromPairs.ts`).
+All Ramda functions are "auto curried". Since an objective is to remain mostly API-compatible, translations must be curried too.
 
-For `arity > 1` functions, there should be a non-exported, non-curried version of the function defined clearly at the top of the file.
-
-Then, the exported function should have a series of TS overloads making all the possible combinations of parameters well-typed, and be implemented using manual currying: see for instance `adjust.ts`.
+Each function should have a series of TS overloads making all the possible combinations of parameters well-typed, and be implemented using manual currying: see for instance `adjust.ts`.
 Manual currying is preferred in order to avoid compromising perf, but might be revisited in the future.
 
 ### Out of scope

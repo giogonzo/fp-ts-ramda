@@ -10,6 +10,9 @@ function _adjust<A>(i: number, f: Endomorphism<A>, as: Array<A>): Array<A> {
   );
 }
 
+/**
+ * Same as https://ramdajs.com/docs/#adjust
+ */
 export function adjust(
   i: number
 ): {
