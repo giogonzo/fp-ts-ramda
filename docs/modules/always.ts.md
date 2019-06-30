@@ -21,3 +21,5 @@ Same as https://ramdajs.com/docs/#always
 ```ts
 export const always = ...
 ```
+
+Added in v0.1.1

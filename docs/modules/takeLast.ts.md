@@ -22,3 +22,5 @@ Similar to https://ramdajs.com/docs/#takeLast, but doesn't work with `string`s
 export function takeLast(i: number): <A>(as: Array<A>) => Array<A>;
 export function takeLast<A>(i: number, as: Array<A>): Array<A>; { ... }
 ```
+
+Added in v0.1.2

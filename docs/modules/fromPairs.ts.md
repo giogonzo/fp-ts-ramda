@@ -21,3 +21,5 @@ Same as https://ramdajs.com/docs/#fromPairs
 ```ts
 export const fromPairs: <A, K extends string>(as: Array<[K, A]>) => Record<K, A> = ...
 ```
+
+Added in v0.1.1

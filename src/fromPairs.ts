@@ -4,6 +4,8 @@ import { getLastSemigroup } from 'fp-ts/lib/Semigroup';
 
 /**
  * Same as https://ramdajs.com/docs/#fromPairs
+ *
+ * @since 0.1.1
  */
 export const fromPairs: <A, K extends string>(as: Array<[K, A]>) => Record<K, A> = fromFoldable(
   getLastSemigroup<any>(),

@@ -28,3 +28,5 @@ export function adjust(
 export function adjust<A>(i: number, f: Endomorphism<A>): (as: Array<A>) => Array<A>;
 export function adjust<A>(i: number, f: Endomorphism<A>, as: Array<A>): Array<A>; { ... }
 ```
+
+Added in v0.1.1

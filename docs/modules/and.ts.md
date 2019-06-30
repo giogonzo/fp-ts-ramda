@@ -22,3 +22,5 @@ Similar to https://ramdajs.com/docs/#and but accepts only `boolean` values, thus
 export function and(a: boolean): (b: boolean) => boolean;
 export function and(a: boolean, b: boolean): boolean; { ... }
 ```
+
+Added in v0.1.1

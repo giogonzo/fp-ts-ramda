@@ -21,3 +21,5 @@ Same as https://ramdajs.com/docs/#toPairs
 ```ts
 export const toPairs = ...
 ```
+
+Added in v0.1.1
