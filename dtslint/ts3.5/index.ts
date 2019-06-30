@@ -52,3 +52,7 @@ FR.append(true, [false]); // $ExpectType boolean[]
 
 R.append(true)([1]); // doesn't error
 FR.append(true)([1]); // $ExpectError
+
+// takeLast
+
+FR.takeLast(1); // $ExpectType <A>(as: A[]) => A[]

@@ -1,13 +1,12 @@
 import { takeRight } from 'fp-ts/lib/Array';
 
-export function takeLast<A>(a: number): (as: Array<A>) => Array<A>;
-export function takeLast<A>(a: number, as: Array<A>): Array<A>;
-export function takeLast<A>(a: number, as?: Array<A>): any {
+export function takeLast(i: number): <A>(as: Array<A>) => Array<A>;
+export function takeLast<A>(i: number, as: Array<A>): Array<A>;
+export function takeLast<A>(i: number, as?: Array<A>) {
+  const f = takeRight(i);
   if (as === undefined) {
-    return function(as: Array<A>) {
-      return takeRight(a)(as);
-    };
+    return f;
   } else {
-    return takeRight(a)(as);
+    return f(as);
   }
 }
