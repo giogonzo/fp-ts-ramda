@@ -10,6 +10,11 @@ function _adjust<A>(i: number, f: Endomorphism<A>, as: Array<A>): Array<A> {
   );
 }
 
+/**
+ * Same as [R.adjust](https://ramdajs.com/docs/#adjust)
+ *
+ * @since 0.1.1
+ */
 export function adjust(
   i: number
 ): {

@@ -36,7 +36,7 @@ FR.adjust(1)((a: string) => a + a)(['a']); // $ExpectType string[]
 
 // always
 
-FR.always(new Date()); // $ExpectType Lazy<Date>
+FR.always(new Date()); // $ExpectType () => Date
 
 // and
 

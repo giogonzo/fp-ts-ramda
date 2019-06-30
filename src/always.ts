@@ -1,3 +1,8 @@
 import { constant } from 'fp-ts/lib/function';
 
-export const always = constant;
+/**
+ * Same as [R.always](https://ramdajs.com/docs/#always)
+ *
+ * @since 0.1.1
+ */
+export const always: <A>(a: A) => () => A = constant;
