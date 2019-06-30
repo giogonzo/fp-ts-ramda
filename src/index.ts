@@ -5,3 +5,4 @@ export * from './adjust';
 export * from './always';
 export * from './and';
 export * from './append';
+export * from './takeLast';

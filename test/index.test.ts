@@ -62,4 +62,12 @@ describe('fp-ts-ramda', () => {
       )
     );
   });
+
+  it('takeLast', () => {
+    fc.assert(
+      fc.property(fc.array(fc.anything()), fc.nat(), (as, a) =>
+        getArrayEq(fromEquals(JSONEqual)).equals(R.takeLast(a, as), FR.takeLast(a, as))
+      )
+    );
+  });
 });
