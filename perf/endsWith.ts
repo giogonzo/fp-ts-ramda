@@ -13,7 +13,7 @@ endsWith (fp-ts) x 16,889,080 ops/sec ±1.28% (83 runs sampled)
 
 suite
   .add('endsWith (ramda)', function() {
-    R.endsWith(['c'], ['a', 'b', 'c']);
+    R.endsWith(['c'])(['a', 'b', 'c']);
   })
   .add('endsWith (fp-ts)', function() {
     endsWith(['c'])(['a', 'b', 'c']);
