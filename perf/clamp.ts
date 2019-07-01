@@ -6,12 +6,12 @@ import { ordNumber } from 'fp-ts/lib/Ord';
 const suite = new Benchmark.Suite();
 
 /*
-clamp (ramda) x 42,113,914 ops/sec ±0.63% (87 runs sampled)
-clamp (ramda, curried) x 16,782,272 ops/sec ±0.36% (92 runs sampled)
-clamp number (fp-ts) x 138,653,426 ops/sec ±0.62% (89 runs sampled)
-clamp number (fp-ts, curried) x 37,658,861 ops/sec ±0.39% (90 runs sampled)
-clamp (fp-ts) x 10,294,595 ops/sec ±1.20% (89 runs sampled)
-clamp (fp-ts, curried) x 8,181,934 ops/sec ±1.19% (85 runs sampled)
+clamp (ramda) x 41,708,876 ops/sec ±0.90% (89 runs sampled)
+clamp (ramda, curried) x 16,625,967 ops/sec ±0.38% (89 runs sampled)
+clamp number (fp-ts) x 24,276,095 ops/sec ±0.33% (92 runs sampled)
+clamp number (fp-ts, curried) x 15,989,159 ops/sec ±0.49% (88 runs sampled)
+clamp (fp-ts) x 7,246,867 ops/sec ±1.39% (90 runs sampled)
+clamp (fp-ts, curried) x 6,220,873 ops/sec ±1.39% (88 runs sampled)
 */
 
 const clampNumber = F.clamp(ordNumber);

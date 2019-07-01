@@ -4,7 +4,7 @@ import * as FR from '../src';
 import { getEq as getArrayEq } from 'fp-ts/lib/Array';
 import { fromEquals, strictEqual } from 'fp-ts/lib/Eq';
 import { getEq as getRecordEq } from 'fp-ts/lib/Record';
-import { ordNumber, ordString, ordDate } from 'fp-ts/lib/Ord';
+import { ordNumber, ordString, ordDate, Ord } from 'fp-ts/lib/Ord';
 
 function JSONEqual(a: unknown, b: unknown): boolean {
   return JSON.stringify(a) === JSON.stringify(b);
@@ -104,5 +104,10 @@ describe('fp-ts-ramda', () => {
         }
       })
     );
+    const ordUndefined: Ord<undefined> = {
+      equals: (a, b) => a === b,
+      compare: () => 0
+    };
+    expect(FR.clamp(ordUndefined)(undefined, undefined, undefined)).toBe(R.clamp(undefined, undefined, undefined));
   });
 });
