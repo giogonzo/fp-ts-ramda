@@ -19,11 +19,11 @@ export function clamp<A>(
 };
 export function clamp<A>(O: Ord<A>): (low: A, hi?: A, x?: A) => any {
   const c = _clamp(O);
-  return function(low: A, hi?: A, x?: A) {
+  return (low: A, hi?: A, x?: A) => {
     if (hi === undefined) {
-      return function(hi: A, x?: A) {
+      return (hi: A, x?: A) => {
         if (x === undefined) {
-          return function(x: A) {
+          return (x: A) => {
             return c(low, hi)(x);
           };
         }
@@ -31,7 +31,7 @@ export function clamp<A>(O: Ord<A>): (low: A, hi?: A, x?: A) => any {
       };
     }
     if (x === undefined) {
-      return function(x: A) {
+      return (x: A) => {
         return c(low, hi)(x);
       };
     }

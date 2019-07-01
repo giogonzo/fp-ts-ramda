@@ -19,7 +19,7 @@ Same as [R.toPairs](https://ramdajs.com/docs/#toPairs)
 **Signature**
 
 ```ts
-export const toPairs: <K extends string, A>(r: Record<K, A>) => [K, A][] = ...
+export const toPairs: <K extends string, A>(r: Record<K, A>) => Array<[K, A]> = ...
 ```
 
 Added in v0.1.1

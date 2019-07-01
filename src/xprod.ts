@@ -11,10 +11,10 @@ function _xprod<A, B>(as: Array<A>, bs: Array<B>): Array<[A, B]> {
  */
 export function xprod<A>(as: Array<A>): <B>(bs: Array<B>) => Array<[A, B]>;
 export function xprod<A, B>(as: Array<A>, bs: Array<B>): Array<[A, B]>;
-export function xprod<A, B>(as: Array<A>, obs?: Array<B>) {
-  if (obs === undefined) {
+export function xprod<A, B>(as: Array<A>, bs?: Array<B>) {
+  if (bs === undefined) {
     return (bs: Array<B>) => _xprod(as, bs);
   } else {
-    return _xprod(as, obs);
+    return _xprod(as, bs);
   }
 }
