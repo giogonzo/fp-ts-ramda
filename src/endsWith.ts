@@ -15,12 +15,12 @@ export function endsWith<A>(
 };
 
 export function endsWith<A>(E: Eq<A>): (suffix: Array<A>, oas?: Array<A>) => any {
-  const _endsWithE = _endsWith(E);
+  const endsWithE = _endsWith(E);
   return (suffix, oas) => {
     if (oas === undefined) {
-      return (as: Array<A>) => _endsWithE(suffix, as);
+      return (as: Array<A>) => endsWithE(suffix, as);
     } else {
-      return _endsWithE(suffix, oas);
+      return endsWithE(suffix, oas);
     }
   };
 }
