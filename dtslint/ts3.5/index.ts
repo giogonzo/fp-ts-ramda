@@ -1,6 +1,7 @@
 import * as FR from '../../src';
 import * as R from 'ramda';
 import { ordNumber } from 'fp-ts/lib/Ord';
+import { eqNumber } from 'fp-ts/lib/Eq';
 
 // fromPairs
 
@@ -64,3 +65,9 @@ FR.clamp(ordNumber)(2, 4); // $ExpectType (x: number) => number
 
 R.clamp(1)(3)(2); // $ExpectError
 FR.clamp(ordNumber)(1)(3)(2); // $ExpectType number
+
+// endsWith
+
+R.endsWith(1)([1, 2, 3]); // no error!
+FR.endsWith(eqNumber)(1)([1, 2, 3]); // $ExpectError
+FR.endsWith(eqNumber)([1])([1, 2, 3]);
