@@ -4,6 +4,7 @@ import * as FR from '../src';
 import { getEq as getArrayEq } from 'fp-ts/lib/Array';
 import { fromEquals, strictEqual } from 'fp-ts/lib/Eq';
 import { getEq as getRecordEq } from 'fp-ts/lib/Record';
+import { ordNumber, ordString, ordDate, Ord } from 'fp-ts/lib/Ord';
 
 function JSONEqual(a: unknown, b: unknown): boolean {
   return JSON.stringify(a) === JSON.stringify(b);
@@ -69,5 +70,44 @@ describe('fp-ts-ramda', () => {
         getArrayEq(fromEquals(JSONEqual)).equals(R.takeLast(a, as), FR.takeLast(a, as))
       )
     );
+  });
+
+  it('clamp', () => {
+    fc.assert(
+      fc.property(fc.integer(), fc.integer(), fc.integer(), (low, hi, value) => {
+        try {
+          // R.clamp throws if low > hi
+          return JSONEqual(R.clamp(low, hi, value), FR.clamp(ordNumber)(low, hi, value));
+        } catch (_) {
+          return true;
+        }
+      })
+    );
+    fc.assert(
+      fc.property(fc.string(), fc.string(), fc.string(), (low, hi, value) => {
+        try {
+          // R.clamp throws if low > hi
+          return JSONEqual(R.clamp(low, hi, value), FR.clamp(ordString)(low, hi, value));
+        } catch (_) {
+          return true;
+        }
+      })
+    );
+    const dateArb = () => fc.nat().map(time => new Date(time));
+    fc.assert(
+      fc.property(dateArb(), dateArb(), dateArb(), (low, hi, value) => {
+        try {
+          // R.clamp throws if low > hi
+          return JSONEqual(R.clamp(low, hi, value), FR.clamp(ordDate)(low, hi, value));
+        } catch (_) {
+          return true;
+        }
+      })
+    );
+    const ordUndefined: Ord<undefined> = {
+      equals: (a, b) => a === b,
+      compare: () => 0
+    };
+    expect(FR.clamp(ordUndefined)(undefined, undefined, undefined)).toBe(R.clamp(undefined, undefined, undefined));
   });
 });

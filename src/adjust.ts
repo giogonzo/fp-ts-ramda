@@ -23,18 +23,18 @@ export function adjust(
 };
 export function adjust<A>(i: number, f: Endomorphism<A>): (as: Array<A>) => Array<A>;
 export function adjust<A>(i: number, f: Endomorphism<A>, as: Array<A>): Array<A>;
-export function adjust<A>(i: number, of?: Endomorphism<A>, oas?: Array<A>): any {
-  if (of === undefined) {
-    return (f: Endomorphism<A>, ooas?: Array<A>) => {
-      if (ooas === undefined) {
+export function adjust<A>(i: number, f?: Endomorphism<A>, as?: Array<A>): any {
+  if (f === undefined) {
+    return (f: Endomorphism<A>, as?: Array<A>) => {
+      if (as === undefined) {
         return (as: Array<A>) => _adjust(i, f, as);
       } else {
-        return _adjust(i, f, ooas);
+        return _adjust(i, f, as);
       }
     };
-  } else if (oas === undefined) {
-    return (as: Array<A>) => _adjust(i, of, as);
+  } else if (as === undefined) {
+    return (as: Array<A>) => _adjust(i, f, as);
   } else {
-    return _adjust(i, of, oas);
+    return _adjust(i, f, as);
   }
 }

@@ -10,10 +10,10 @@ const concat = semigroupAll.concat;
  */
 export function and(a: boolean): (b: boolean) => boolean;
 export function and(a: boolean, b: boolean): boolean;
-export function and(a: boolean, ob?: boolean) {
-  if (ob === undefined) {
+export function and(a: boolean, b?: boolean) {
+  if (b === undefined) {
     return (b: boolean) => concat(a, b);
   } else {
-    return concat(a, ob);
+    return concat(a, b);
   }
 }

@@ -7,10 +7,10 @@ import { snoc } from 'fp-ts/lib/Array';
  */
 export function append<A>(a: A): (as: Array<A>) => Array<A>;
 export function append<A>(a: A, as: Array<A>): Array<A>;
-export function append<A>(a: A, oas?: Array<A>): any {
-  if (oas === undefined) {
+export function append<A>(a: A, as?: Array<A>): any {
+  if (as === undefined) {
     return (as: Array<A>) => snoc(as, a);
   } else {
-    return snoc(oas, a);
+    return snoc(as, a);
   }
 }
