@@ -72,6 +72,18 @@ describe('fp-ts-ramda', () => {
     );
   });
 
+  it('endsWith', () => {
+    const endsWith = FR.endsWith(fromEquals(JSONEqual));
+    fc.assert(
+      fc.property(
+        fc.array(fc.anything()),
+        fc.array(fc.anything()),
+        (suffix, as) =>
+          R.endsWith(suffix, as) === endsWith(suffix, as) && R.endsWith(suffix)(as) === endsWith(suffix)(as)
+      )
+    );
+  });
+
   it('clamp', () => {
     fc.assert(
       fc.property(fc.integer(), fc.integer(), fc.integer(), (low, hi, value) => {
