@@ -1,6 +1,6 @@
 {
   "name": "fp-ts-ramda",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "ramda reimplemented using fp-ts",
   "files": [
     "lib"
