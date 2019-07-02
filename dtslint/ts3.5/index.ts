@@ -1,5 +1,6 @@
 import * as FR from '../../src';
 import * as R from 'ramda';
+import { ordNumber } from 'fp-ts/lib/Ord';
 
 // fromPairs
 
@@ -56,3 +57,10 @@ FR.append(true)([1]); // $ExpectError
 // takeLast
 
 FR.takeLast(1); // $ExpectType <A>(as: A[]) => A[]
+
+// clamp
+
+FR.clamp(ordNumber)(2, 4); // $ExpectType (x: number) => number
+
+R.clamp(1)(3)(2); // $ExpectError
+FR.clamp(ordNumber)(1)(3)(2); // $ExpectType number

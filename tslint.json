@@ -1,0 +1,12 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "quotemark": [true, "single"],
+    "array-type": [true, "generic"],
+    "deprecation": true,
+    "no-inferred-empty-object-type": true,
+    "trailing-comma": false,
+    "arrow-parens": false,
+    "no-shadowed-variable": false
+  }
+}

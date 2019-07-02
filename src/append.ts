@@ -9,9 +9,7 @@ export function append<A>(a: A): (as: Array<A>) => Array<A>;
 export function append<A>(a: A, as: Array<A>): Array<A>;
 export function append<A>(a: A, as?: Array<A>): any {
   if (as === undefined) {
-    return function(as: Array<A>) {
-      return snoc(as, a);
-    };
+    return (as: Array<A>) => snoc(as, a);
   } else {
     return snoc(as, a);
   }
