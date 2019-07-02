@@ -7,6 +7,11 @@ function _endsWith<A>(E: Eq<A>): (suffix: Array<A>, as: Array<A>) => boolean {
   return (suffix, as) => eqArray.equals(suffix, takeLast(suffix.length, as));
 }
 
+/**
+ * Similar to [R.edsWith](https://ramdajs.com/docs/#endsWith), but doesn't work with `string`s
+ *
+ * @since 0.1.2
+ */
 export function endsWith<A>(
   E: Eq<A>
 ): {
