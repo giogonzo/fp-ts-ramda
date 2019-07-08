@@ -16,7 +16,7 @@ Each function should:
 
 ## More specific notes regarding implementation choices
 
-### [TODO] API compatibilty with Ramda
+### [TODO] API compatibility with Ramda
 
 For some Ramda functions, 100% API compatibility is easy to obtain. For others (typically the ones relying on instances of some typeclass), it's difficult or nearly impossible without compromising type-safety.
 
