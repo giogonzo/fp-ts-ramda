@@ -71,3 +71,8 @@ FR.clamp(ordNumber)(1)(3)(2); // $ExpectType number
 R.endsWith(1)([1, 2, 3]); // no error!
 FR.endsWith(eqNumber)(1)([1, 2, 3]); // $ExpectError
 FR.endsWith(eqNumber)([1])([1, 2, 3]);
+
+// defaultTo
+
+R.defaultTo(1, undefined); // $ExpectType 1 | undefined
+FR.defaultTo(1, undefined); // $ExpectType 1

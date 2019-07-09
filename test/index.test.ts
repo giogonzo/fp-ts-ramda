@@ -122,4 +122,14 @@ describe('fp-ts-ramda', () => {
     };
     expect(FR.clamp(ordUndefined)(undefined, undefined, undefined)).toBe(R.clamp(undefined, undefined, undefined));
   });
+
+  it('defaultTo', () => {
+    fc.assert(
+      fc.property(
+        fc.anything().filter(v => !isNaN(v)),
+        fc.anything().filter(v => v != null && !isNaN(v)),
+        (value, d) => R.defaultTo(d, value) === FR.defaultTo(d, value)
+      )
+    );
+  });
 });
