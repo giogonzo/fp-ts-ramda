@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="HaskellBuildOptions">
+    <stackPath>C:\Users\sbald\AppData\Roaming\local\bin\stack.exe</stackPath>
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/Code/DeepSport/backend/fp-networking" value="PREVIEW" />
+        <entry key="$USER_HOME$/Code/DeepSport/backend/fp-nio" value="PREVIEW" />
+        <entry key="$USER_HOME$/Code/Workbook/Scala/monix-sample" value="PREVIEW" />
+        <entry key="$USER_HOME$/Code/Workbook/ds-finagle-websockets" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ScalaSbtSettings">
+    <option name="customVMPath" />
+  </component>
+</project>
