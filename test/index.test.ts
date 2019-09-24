@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import * as fc from 'fast-check';
 import * as FR from '../src';
 import { getEq as getArrayEq } from 'fp-ts/lib/Array';
-import { fromEquals, strictEqual } from 'fp-ts/lib/Eq';
+import { fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
 import { getEq as getRecordEq } from 'fp-ts/lib/Record';
 import { ordNumber, ordString, ordDate, Ord } from 'fp-ts/lib/Ord';
 
@@ -45,6 +45,23 @@ describe('fp-ts-ramda', () => {
       fc.property(fc.integer(), fc.array(fc.integer()), (i, as) =>
         getArrayEq(fromEquals(strictEqual)).equals(R.adjust(i, f, as), FR.adjust(i, f, as))
       )
+    );
+  });
+
+  it('assoc', () => {
+    const ov = 42;
+    fc.assert(
+      fc.property(fc.string(), fc.integer(), (k, nv) => {
+        const obj = { k: ov };
+        return getStructEq({ k: fromEquals(strictEqual) }).equals(R.assoc(k, nv, obj), FR.assoc(k, nv, obj));
+      })
+    );
+    fc.assert(
+      fc.property(fc.string(), fc.integer(), (k, nv) => {
+        const obj = { k: ov };
+        const newObj = FR.assoc(k, nv, obj);
+        return newObj !== obj; // shallow copy
+      })
     );
   });
 

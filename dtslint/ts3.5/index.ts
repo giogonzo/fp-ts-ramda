@@ -36,6 +36,20 @@ FR.adjust(1, (a: string) => a + a)(['a']); // $ExpectType string[]
 R.adjust(1)((a: string) => a + a)(['a']); // $ExpectError
 FR.adjust(1)((a: string) => a + a)(['a']); // $ExpectType string[]
 
+// assoc
+
+const ov: Record<'a', number> = { a: 20 };
+
+FR.assoc('a', 42, ov); // $ExpectType Record<"a", number>
+FR.assoc('a', 42)(ov); // $ExpectType Record<"a", number>
+FR.assoc('a')(42, ov); // $ExpectType Record<"a", number>
+FR.assoc('a')(42)(ov); // $ExpectType Record<"a", number>
+
+FR.assoc('b', 'test', ov); // $ExpectType Record<"a", number> & Record<"b", string>
+FR.assoc('b', 'test')(ov); // $ExpectType Record<"a", number> & Record<"b", string>
+FR.assoc('b')('test', ov); // $ExpectType Record<"a", number> & Record<"b", string>
+FR.assoc('b')('test')(ov); // $ExpectType Record<"a", number> & Record<"b", string>
+
 // always
 
 FR.always(new Date()); // $ExpectType () => Date
