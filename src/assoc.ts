@@ -7,7 +7,7 @@ function _assoc<K extends string, V, A extends object>(k: K, v: V, obj: A): A & 
 /**
  * Same as [R.assoc](https://ramdajs.com/docs/#assoc)
  *
- * @since 0.1.1
+ * @since 0.1.3
  */
 export function assoc<K extends string>(
   k: K
