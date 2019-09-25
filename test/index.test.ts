@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import * as fc from 'fast-check';
 import * as FR from '../src';
 import { getEq as getArrayEq } from 'fp-ts/lib/Array';
-import { fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
+import { eqNumber, fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
 import { getEq as getRecordEq } from 'fp-ts/lib/Record';
 import { ordNumber, ordString, ordDate, Ord } from 'fp-ts/lib/Ord';
 
@@ -147,6 +147,18 @@ describe('fp-ts-ramda', () => {
         fc.anything().filter(v => v != null && !isNaN(v)),
         (value, d) => R.defaultTo(d, value) === FR.defaultTo(d, value)
       )
+    );
+  });
+
+  it('prop', () => {
+    fc.assert(
+      fc.property(fc.integer(), v => {
+        const obj = { key: v };
+        return (
+          eqNumber.equals(R.prop('key', obj), FR.prop('key', obj)) &&
+          eqNumber.equals(R.prop('key')(obj), FR.prop('key')(obj))
+        );
+      })
     );
   });
 });
