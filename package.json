@@ -51,7 +51,8 @@
     "typescript": "^3.5.2"
   },
   "dependencies": {
-    "fp-ts": "^2.0.0"
+    "fp-ts": "^2.0.0",
+    "monocle-ts": "^2.0.0"
   },
   "jest": {
     "preset": "ts-jest"

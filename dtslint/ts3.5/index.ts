@@ -90,3 +90,12 @@ FR.endsWith(eqNumber)([1])([1, 2, 3]);
 
 R.defaultTo(1, undefined); // $ExpectType 1 | undefined
 FR.defaultTo(1, undefined); // $ExpectType 1
+
+// prop
+const propTestObj = { key: 5 };
+
+FR.prop('notKey', propTestObj); // $ExpectError
+FR.prop('notKey')(propTestObj); // $ExpectError
+FR.prop('key', propTestObj); // $ExpectType number
+FR.prop('key'); // $ExpectType <T extends Record<"key", any>>(obj: T) => T["key"]
+FR.prop('key')(propTestObj); // $ExpectType number

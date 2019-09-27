@@ -1,10 +1,10 @@
-import * as R from 'ramda';
 import * as fc from 'fast-check';
-import * as FR from '../src';
 import { getEq as getArrayEq } from 'fp-ts/lib/Array';
 import { fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
+import { Ord, ordDate, ordNumber, ordString } from 'fp-ts/lib/Ord';
 import { getEq as getRecordEq } from 'fp-ts/lib/Record';
-import { ordNumber, ordString, ordDate, Ord } from 'fp-ts/lib/Ord';
+import * as R from 'ramda';
+import * as FR from '../src';
 
 function JSONEqual(a: unknown, b: unknown): boolean {
   return JSON.stringify(a) === JSON.stringify(b);
@@ -146,6 +146,25 @@ describe('fp-ts-ramda', () => {
         fc.anything().filter(v => !isNaN(v)),
         fc.anything().filter(v => v != null && !isNaN(v)),
         (value, d) => R.defaultTo(d, value) === FR.defaultTo(d, value)
+      )
+    );
+  });
+
+  it('prop', () => {
+    fc.assert(
+      fc.property(
+        fc
+          .object()
+          .filter(obj => Object.keys(obj).length > 0)
+          .chain(obj =>
+            fc.oneof(...Object.keys(obj).map(fc.constant)).map(key => ({
+              key: key as string,
+              obj: obj as Record<string, any>
+            }))
+          ),
+        ({ obj, key }) => {
+          return JSONEqual(R.prop(key, obj), FR.prop(key, obj)) && JSONEqual(R.prop(key)(obj), FR.prop(key)(obj));
+        }
       )
     );
   });
