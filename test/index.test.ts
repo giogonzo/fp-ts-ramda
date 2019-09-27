@@ -1,6 +1,6 @@
 import * as fc from 'fast-check';
 import { getEq as getArrayEq } from 'fp-ts/lib/Array';
-import { eqNumber, fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
+import { fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
 import { Ord, ordDate, ordNumber, ordString } from 'fp-ts/lib/Ord';
 import { getEq as getRecordEq } from 'fp-ts/lib/Record';
 import * as R from 'ramda';
@@ -157,23 +157,15 @@ describe('fp-ts-ramda', () => {
           .object()
           .filter(obj => Object.keys(obj).length > 0)
           .chain(obj =>
-            fc.oneof(...Object.keys(obj).map(fc.constant)).map(existingKey => ({
-              existingKey,
-              objWithKey: obj
+            fc.oneof(...Object.keys(obj).map(fc.constant)).map(key => ({
+              key: key as string,
+              obj: obj as Record<string, any>
             }))
           ),
-        ({ objWithKey, existingKey }) => {
-          return (
-            strictEqual(R.prop(existingKey, objWithKey), FR.prop(existingKey, objWithKey)) &&
-            strictEqual(R.prop(existingKey)(objWithKey), FR.prop(existingKey)(objWithKey))
-          );
+        ({ obj, key }) => {
+          return JSONEqual(R.prop(key, obj), FR.prop(key, obj)) && JSONEqual(R.prop(key)(obj), FR.prop(key)(obj));
         }
       )
-    );
-    fc.assert(
-      fc.property(fc.object(), fc.string(), (obj, key) => {
-        return strictEqual(R.prop(key, obj), FR.prop(key, obj)) && eqNumber.equals(R.prop(key)(obj), FR.prop(key)(obj));
-      })
     );
   });
 });
