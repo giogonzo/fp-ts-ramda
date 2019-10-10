@@ -3,10 +3,12 @@ import { Predicate } from 'fp-ts/lib/function';
 import { monoidAll } from 'fp-ts/lib/Monoid';
 import { pipe } from 'fp-ts/lib/pipeable';
 
+const monoidAllFoldMap = foldMap(monoidAll);
+
 function _allPass<T>(predicates: Array<Predicate<T>>, val: T): boolean {
   return pipe(
     predicates,
-    foldMap(monoidAll)(pred => pred(val))
+    monoidAllFoldMap(predicate => predicate(val))
   );
 }
 
