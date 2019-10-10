@@ -173,8 +173,11 @@ describe('fp-ts-ramda', () => {
     const lt20 = (n: number) => n < 20;
     const gt5 = (n: number) => n > 5;
     fc.assert(
-      fc.property(fc.integer(), num =>
-        eqBoolean.equals(R.allPass([odd, lt20, gt5])(num), FR.allPass([odd, lt20, gt5])(num))
+      fc.property(
+        fc.integer(),
+        num =>
+          eqBoolean.equals(R.allPass([odd, lt20, gt5])(num), FR.allPass([odd, lt20, gt5])(num)) &&
+          eqBoolean.equals(R.allPass([])(num), FR.allPass([])(num))
       )
     );
   });
