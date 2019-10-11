@@ -6,7 +6,7 @@ const suite = new Benchmark.Suite();
 
 /*
 allPass (ramda) x 600,654 ops/sec ±0.66% (87 runs sampled)
-allPass (fp-ts) x 5,263,519 ops/sec ±0.70% (87 runs sampled)
+allPass (fp-ts) x 8,705,716 ops/sec ±1.66% (89 runs sampled)
 */
 
 const odd = (n: number) => n % 2 !== 0;
