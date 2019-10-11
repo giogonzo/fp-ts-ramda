@@ -99,3 +99,12 @@ FR.prop('notKey')(propTestObj); // $ExpectError
 FR.prop('key', propTestObj); // $ExpectType number
 FR.prop('key'); // $ExpectType <T extends Record<"key", any>>(obj: T) => T["key"]
 FR.prop('key')(propTestObj); // $ExpectType number
+
+// anyPass
+const odd = (n: number) => n % 2 !== 0;
+const lt20 = (n: number) => n < 20;
+const gt5 = (n: number) => n > 5;
+
+R.anyPass([odd, lt20, gt5], 20); // $ExpectError
+FR.anyPass([odd, lt20, gt5], 20); // $ExpectType boolean
+FR.anyPass([odd, lt20, gt5]); // $ExpectType Predicate<number>

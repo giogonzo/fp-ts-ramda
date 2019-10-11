@@ -11,3 +11,4 @@ export * from './endsWith';
 export * from './clamp';
 export * from './defaultTo';
 export * from './prop';
+export * from './anyPass';

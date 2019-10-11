@@ -1,6 +1,6 @@
 import * as fc from 'fast-check';
 import { getEq as getArrayEq } from 'fp-ts/lib/Array';
-import { fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
+import { eqBoolean, fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
 import { Ord, ordDate, ordNumber, ordString } from 'fp-ts/lib/Ord';
 import { getEq as getRecordEq } from 'fp-ts/lib/Record';
 import * as R from 'ramda';
@@ -165,6 +165,19 @@ describe('fp-ts-ramda', () => {
         ({ obj, key }) => {
           return JSONEqual(R.prop(key, obj), FR.prop(key, obj)) && JSONEqual(R.prop(key)(obj), FR.prop(key)(obj));
         }
+      )
+    );
+  });
+  it('anyPass', () => {
+    const odd = (n: number) => n % 2 !== 0;
+    const lt20 = (n: number) => n < 20;
+    const gt5 = (n: number) => n > 5;
+    fc.assert(
+      fc.property(
+        fc.integer(),
+        num =>
+          eqBoolean.equals(R.anyPass([odd, lt20, gt5])(num), FR.anyPass([odd, lt20, gt5])(num)) &&
+          eqBoolean.equals(R.anyPass([])(num), FR.anyPass([])(num))
       )
     );
   });
