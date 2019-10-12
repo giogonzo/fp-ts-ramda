@@ -108,3 +108,8 @@ const gt5 = (n: number) => n > 5;
 R.allPass([odd, lt20, gt5], 20); // $ExpectError
 FR.allPass([odd, lt20, gt5], 20); // $ExpectType boolean
 FR.allPass([odd, lt20, gt5]); // $ExpectType Predicate<number>
+
+// anyPass
+R.anyPass([odd, lt20, gt5], 20); // $ExpectError
+FR.anyPass([odd, lt20, gt5], 20); // $ExpectType boolean
+FR.anyPass([odd, lt20, gt5]); // $ExpectType Predicate<number>
