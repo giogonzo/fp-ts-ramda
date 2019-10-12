@@ -173,6 +173,7 @@ describe('fp-ts-ramda', () => {
       )
     );
   });
+
   it('allPass', () => {
     const odd = (n: number) => n % 2 !== 0;
     const lt20 = (n: number) => n < 20;
@@ -181,9 +182,10 @@ describe('fp-ts-ramda', () => {
       fc.property(
         fc.integer(),
         num =>
-          eqBoolean.equals(R.allPass([odd, lt20, gt5])(num), FR.allPass([odd, lt20, gt5])(num)) &&
-          eqBoolean.equals(R.allPass([])(num), FR.allPass([])(num))
-      )
+          eqBoolean.equals(R.allPass([odd, lt20, gt5])(num), FR.allPass([odd, lt20, gt5], num)) &&
+          eqBoolean.equals(R.allPass([])(num), FR.allPass([], num))
+      ),
+      { examples: [[0]] }
     );
   });
 });
