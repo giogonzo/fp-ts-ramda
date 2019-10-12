@@ -5,8 +5,8 @@ import * as FR from '../src/';
 const suite = new Benchmark.Suite();
 
 /*
-anyPass (ramda) x 573,086 ops/sec ±0.92% (89 runs sampled)
-anyPass (fp-ts) x 8,551,076 ops/sec ±0.76% (88 runs sampled)
+anyPass (ramda) x 583,325 ops/sec ±0.65% (86 runs sampled)
+anyPass (fp-ts) x 8,483,346 ops/sec ±0.85% (85 runs sampled)
 */
 
 const odd = (n: number) => n % 2 !== 0;

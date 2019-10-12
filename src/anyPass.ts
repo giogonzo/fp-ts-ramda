@@ -22,5 +22,9 @@ function _anyPass<T>(predicates: Array<Predicate<T>>, val: T): boolean {
 export function anyPass<T>(predicates: Array<Predicate<T>>): Predicate<T>;
 export function anyPass<T>(predicates: Array<Predicate<T>>, val: T): boolean;
 export function anyPass<T>(predicates: Array<Predicate<T>>, val?: T): Predicate<T> | boolean {
-  return val === undefined ? val => _anyPass(predicates, val) : _anyPass(predicates, val);
+  if (val === undefined) {
+    return val => _anyPass(predicates, val);
+  } else {
+    return _anyPass(predicates, val);
+  }
 }
