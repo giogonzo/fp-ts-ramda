@@ -13,3 +13,4 @@ export * from './clamp';
 export * from './defaultTo';
 export * from './prop';
 export * from './anyPass';
+export * from './any';

@@ -1,9 +1,6 @@
-import { foldMap } from 'fp-ts/lib/Array';
 import { Predicate } from 'fp-ts/lib/function';
-import { monoidAny } from 'fp-ts/lib/Monoid';
 import { pipe } from 'fp-ts/lib/pipeable';
-
-const monoidAnyFoldMap = foldMap(monoidAny);
+import { monoidAnyFoldMap } from './shared/monoidAnyFoldMap';
 
 function _anyPass<T>(predicates: Array<Predicate<T>>, val: T): boolean {
   return pipe(
