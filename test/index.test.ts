@@ -237,7 +237,7 @@ describe('fp-ts-ramda', () => {
             )
           )
       ),
-      { examples: [] }
+      { examples: [[[]]] }
     );
   });
 });
