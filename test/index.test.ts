@@ -1,6 +1,7 @@
 import * as fc from 'fast-check';
 import { getEq as getArrayEq } from 'fp-ts/lib/Array';
 import { eqBoolean, fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
+import { flow } from 'fp-ts/lib/function';
 import { Ord, ordDate, ordNumber, ordString } from 'fp-ts/lib/Ord';
 import { getEq as getRecordEq } from 'fp-ts/lib/Record';
 import * as R from 'ramda';
@@ -199,6 +200,44 @@ describe('fp-ts-ramda', () => {
           eqBoolean.equals(R.anyPass([])(num), FR.anyPass([], num))
       ),
       { examples: [[0]] }
+    );
+  });
+  it('any', () => {
+    const odd = (n: number) => n % 2 !== 0;
+    const isCapitalized = (str: string) => (str.length ? /[A-Z]/.test(str[0]) : false);
+    fc.assert(
+      fc.property(
+        fc.array(fc.integer()),
+        as => eqBoolean.equals(R.any(odd, as), FR.any(odd, as)) && eqBoolean.equals(R.any(odd)(as), FR.any(odd)(as))
+      ),
+      { examples: [[[]]] }
+    );
+    fc.assert(
+      fc.property(
+        fc.array(
+          fc.record({
+            firstName: fc.string()
+          })
+        ),
+        as =>
+          eqBoolean.equals(
+            R.any(
+              R.pipe(
+                R.prop('firstName'),
+                isCapitalized
+              ),
+              as
+            ),
+            FR.any(
+              flow(
+                FR.prop('firstName'),
+                isCapitalized
+              ),
+              as
+            )
+          )
+      ),
+      { examples: [[[]]] }
     );
   });
 });
