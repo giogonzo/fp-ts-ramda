@@ -1,6 +1,6 @@
 ---
 title: takeLast.ts
-nav_order: 14
+nav_order: 18
 parent: Modules
 ---
 

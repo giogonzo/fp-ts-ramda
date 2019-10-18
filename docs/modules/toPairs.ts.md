@@ -1,6 +1,6 @@
 ---
 title: toPairs.ts
-nav_order: 15
+nav_order: 19
 parent: Modules
 ---
 
