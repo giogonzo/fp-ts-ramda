@@ -240,4 +240,42 @@ describe('fp-ts-ramda', () => {
       { examples: [[[]]] }
     );
   });
+  it('all', () => {
+    const odd = (n: number) => n % 2 !== 0;
+    const isCapitalized = (str: string) => (str.length ? /[A-Z]/.test(str[0]) : false);
+    fc.assert(
+      fc.property(
+        fc.array(fc.integer()),
+        as => eqBoolean.equals(R.all(odd, as), FR.all(odd, as)) && eqBoolean.equals(R.all(odd)(as), FR.all(odd)(as))
+      ),
+      { examples: [[[]]] }
+    );
+    fc.assert(
+      fc.property(
+        fc.array(
+          fc.record({
+            firstName: fc.string()
+          })
+        ),
+        as =>
+          eqBoolean.equals(
+            R.all(
+              R.pipe(
+                R.prop('firstName'),
+                isCapitalized
+              ),
+              as
+            ),
+            FR.all(
+              flow(
+                FR.prop('firstName'),
+                isCapitalized
+              ),
+              as
+            )
+          )
+      ),
+      { examples: [[[]]] }
+    );
+  });
 });

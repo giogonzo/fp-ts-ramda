@@ -6,7 +6,7 @@ function _any<T>(predicate: Predicate<T>, as: Array<T>): boolean {
 }
 
 /**
- * Similar to [R.any](https://ramdajs.com/docs/#anyPass). Returns true if at least one of the elements of the list
+ * Similar to [R.any](https://ramdajs.com/docs/#any). Returns true if at least one of the elements of the list
  * match the predicate, false otherwise. Does not dispatch to the any method of the second argument if present. Does not
  * act as a transducer if a transformer is given in the list position.
  *

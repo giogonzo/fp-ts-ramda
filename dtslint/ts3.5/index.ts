@@ -117,3 +117,7 @@ FR.anyPass([odd, lt20, gt5]); // $ExpectType Predicate<number>
 // any
 FR.any(odd, [20]); // $ExpectType boolean
 FR.any(odd); // $ExpectType Predicate<number[]>
+
+// all
+FR.all(odd, [20]); // $ExpectType boolean
+FR.all(odd); // $ExpectType Predicate<number[]>
