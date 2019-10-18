@@ -121,3 +121,11 @@ FR.any(odd); // $ExpectType Predicate<number[]>
 // all
 FR.all(odd, [20]); // $ExpectType boolean
 FR.all(odd); // $ExpectType Predicate<number[]>
+
+// equals
+FR.equals(eqNumber); // { <B extends number, C extends number>(x: B, y: C): boolean; <B extends number>(x: B): <C extends number>(y: C) => boolean; }
+FR.equals(eqNumber, 125); // <C extends number>(y: C) => boolean
+FR.equals(eqNumber)(125); // <C extends number>(y: C) => boolean
+FR.equals(eqNumber)(123)(39); // $ExpectType boolean
+FR.equals(eqNumber, 36, 136); // $ExpectType boolean
+FR.equals(eqNumber, '', 0); // $ExpectError
