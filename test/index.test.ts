@@ -284,7 +284,7 @@ describe('fp-ts-ramda', () => {
         fc.integer(),
         fc.integer(),
         (x, y) =>
-          eqBoolean.equals(R.equals(x, y), FR.equals(eqNumber, x, y)) &&
+          eqBoolean.equals(R.equals(x, y), FR.equals(eqNumber)(x, y)) &&
           eqBoolean.equals(R.equals(x)(y), FR.equals(eqNumber)(x)(y))
       ),
       {
@@ -296,7 +296,7 @@ describe('fp-ts-ramda', () => {
         fc.string(),
         fc.string(),
         (x, y) =>
-          eqBoolean.equals(R.equals(x, y), FR.equals(eqString, x, y)) &&
+          eqBoolean.equals(R.equals(x, y), FR.equals(eqString)(x, y)) &&
           eqBoolean.equals(R.equals(x)(y), FR.equals(eqString)(x)(y))
       ),
       {
@@ -308,7 +308,7 @@ describe('fp-ts-ramda', () => {
         fc.boolean(),
         fc.boolean(),
         (x, y) =>
-          eqBoolean.equals(R.equals(x, y), FR.equals(eqBoolean, x, y)) &&
+          eqBoolean.equals(R.equals(x, y), FR.equals(eqBoolean)(x, y)) &&
           eqBoolean.equals(R.equals(x)(y), FR.equals(eqBoolean)(x)(y))
       )
     );
@@ -316,7 +316,7 @@ describe('fp-ts-ramda', () => {
       fc.property(
         fc.array(fc.string()),
         as =>
-          eqBoolean.equals(R.equals(as, as), FR.equals(getEq(eqString), as, as)) &&
+          eqBoolean.equals(R.equals(as, as), FR.equals(getEq(eqString))(as, as)) &&
           eqBoolean.equals(R.equals(as)(as), FR.equals(getEq(eqString))(as)(as))
       ),
       {

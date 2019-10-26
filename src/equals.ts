@@ -1,4 +1,5 @@
 import { Eq } from 'fp-ts/lib/Eq';
+import { Predicate } from 'fp-ts/lib/function';
 
 /**
  * Similar to [R.equals](https://ramdajs.com/docs/#equals), but:
@@ -12,23 +13,15 @@ import { Eq } from 'fp-ts/lib/Eq';
 export function equals<A>(
   E: Eq<A>
 ): {
-  <B extends A, C extends A>(x: B, y: C): boolean;
-  <B extends A>(x: B): <C extends A>(y: C) => boolean;
+  (x: A, y: A): boolean;
+  (x: A): Predicate<A>;
 };
-export function equals<A, B extends A>(E: Eq<A>, x: B): <C extends A>(y: C) => boolean;
-export function equals<A, B extends A, C extends A>(E: Eq<A>, x: B, y: C): boolean;
-export function equals<A, B extends A, C extends A>(E: Eq<A>, x?: B, y?: C): any {
-  if (x === undefined) {
-    return <B extends A, C extends A>(x: B, y?: C) => {
-      if (y === undefined) {
-        return <C extends A>(y: C) => E.equals(x, y);
-      } else {
-        return E.equals(x, y);
-      }
-    };
-  } else if (y === undefined) {
-    return <C extends A>(y: C) => E.equals(x, y);
-  } else {
-    return E.equals(x, y);
-  }
+export function equals<A>(E: Eq<A>): (x: A, y?: A) => Predicate<A> | boolean {
+  return (x, y) => {
+    if (y === undefined) {
+      return y => E.equals(x, y);
+    } else {
+      return E.equals(x, y);
+    }
+  };
 }
