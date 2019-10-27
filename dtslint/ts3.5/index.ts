@@ -128,3 +128,8 @@ FR.equals(eqNumber)(125); // $ExpectType Predicate<number>
 FR.equals(eqNumber)(123)(39); // $ExpectType boolean
 FR.equals(eqNumber)(36, 136); // $ExpectType boolean
 FR.equals(eqNumber)('', 0); // $ExpectError
+
+// objOf
+FR.objOf('key', 5); // $ExpectType Record<"key", number>
+FR.objOf('key')(5); // $ExpectType Record<"key", number>
+FR.objOf('key'); // $ExpectType <T>(a: T) => Record<"key", T>

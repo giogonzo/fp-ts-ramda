@@ -324,4 +324,16 @@ describe('fp-ts-ramda', () => {
       }
     );
   });
+  it('objOf', () => {
+    fc.assert(
+      fc.property(
+        fc.string(),
+        fcAnything(),
+        (x, y) => JSONEqual(R.objOf(x, y), FR.objOf(x, y)) && JSONEqual(R.objOf(x)(y), FR.objOf(x)(y))
+      ),
+      {
+        examples: [['', undefined]]
+      }
+    );
+  });
 });
