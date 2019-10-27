@@ -30,7 +30,7 @@ describe('fp-ts-ramda', () => {
       fc.property(fc.object(), r => {
         const as1 = FR.toPairs(r);
         as1.sort();
-        const as2 = R.toPairs(r);
+        const as2 = R.toPairs(r as any);
         as2.sort();
         return getArrayEq(fromEquals(JSONEqual)).equals(as1, as2);
       })
