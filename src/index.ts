@@ -15,3 +15,4 @@ export * from './prop';
 export * from './anyPass';
 export * from './any';
 export * from './all';
+export * from './equals';

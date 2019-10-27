@@ -1,6 +1,6 @@
 import * as fc from 'fast-check';
-import { getEq as getArrayEq } from 'fp-ts/lib/Array';
-import { eqBoolean, fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
+import { getEq, getEq as getArrayEq } from 'fp-ts/lib/Array';
+import { eqBoolean, eqNumber, eqString, fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
 import { flow } from 'fp-ts/lib/function';
 import { Ord, ordDate, ordNumber, ordString } from 'fp-ts/lib/Ord';
 import { getEq as getRecordEq } from 'fp-ts/lib/Record';
@@ -276,6 +276,52 @@ describe('fp-ts-ramda', () => {
           )
       ),
       { examples: [[[]]] }
+    );
+  });
+  it('equals', () => {
+    fc.assert(
+      fc.property(
+        fc.integer(),
+        fc.integer(),
+        (x, y) =>
+          eqBoolean.equals(R.equals(x, y), FR.equals(eqNumber)(x, y)) &&
+          eqBoolean.equals(R.equals(x)(y), FR.equals(eqNumber)(x)(y))
+      ),
+      {
+        examples: [[0, 0]]
+      }
+    );
+    fc.assert(
+      fc.property(
+        fc.string(),
+        fc.string(),
+        (x, y) =>
+          eqBoolean.equals(R.equals(x, y), FR.equals(eqString)(x, y)) &&
+          eqBoolean.equals(R.equals(x)(y), FR.equals(eqString)(x)(y))
+      ),
+      {
+        examples: [['', '']]
+      }
+    );
+    fc.assert(
+      fc.property(
+        fc.boolean(),
+        fc.boolean(),
+        (x, y) =>
+          eqBoolean.equals(R.equals(x, y), FR.equals(eqBoolean)(x, y)) &&
+          eqBoolean.equals(R.equals(x)(y), FR.equals(eqBoolean)(x)(y))
+      )
+    );
+    fc.assert(
+      fc.property(
+        fc.array(fc.string()),
+        as =>
+          eqBoolean.equals(R.equals(as, as), FR.equals(getEq(eqString))(as, as)) &&
+          eqBoolean.equals(R.equals(as)(as), FR.equals(getEq(eqString))(as)(as))
+      ),
+      {
+        examples: [[[]]]
+      }
     );
   });
 });
