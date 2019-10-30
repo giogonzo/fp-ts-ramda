@@ -41,7 +41,7 @@
     "benchmark": "^2.1.4",
     "docs-ts": "^0.1.0",
     "dtslint": "github:gcanti/dtslint",
-    "fast-check": "^1.15.1",
+    "fast-check": "^1.18.1",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
     "ramda": "^0.26.1",

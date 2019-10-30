@@ -11,15 +11,10 @@ function JSONEqual(a: unknown, b: unknown): boolean {
   return JSON.stringify(a) === JSON.stringify(b);
 }
 
-// temporary helper until https://github.com/dubzzz/fast-check/pull/436 is released
-function fcAnything(): fc.Arbitrary<unknown> {
-  return fc.anything();
-}
-
 describe('fp-ts-ramda', () => {
   it('fromPairs', () => {
     fc.assert(
-      fc.property(fc.array(fc.tuple(fc.string(), fcAnything())), as =>
+      fc.property(fc.array(fc.tuple(fc.string(), fc.anything())), as =>
         getRecordEq(fromEquals(JSONEqual)).equals(FR.fromPairs(as), R.fromPairs(as))
       )
     );
@@ -39,7 +34,7 @@ describe('fp-ts-ramda', () => {
 
   it('xprod', () => {
     fc.assert(
-      fc.property(fc.array(fcAnything()), fc.array(fcAnything()), (as, bs) =>
+      fc.property(fc.array(fc.anything()), fc.array(fc.anything()), (as, bs) =>
         getArrayEq(fromEquals(JSONEqual)).equals(R.xprod(as, bs), FR.xprod(as, bs))
       )
     );
@@ -72,7 +67,7 @@ describe('fp-ts-ramda', () => {
   });
 
   it('always', () => {
-    fc.assert(fc.property(fcAnything(), v => JSONEqual(R.always(v)(), FR.always(v)())));
+    fc.assert(fc.property(fc.anything(), v => JSONEqual(R.always(v)(), FR.always(v)())));
   });
 
   it('and', () => {
@@ -81,7 +76,7 @@ describe('fp-ts-ramda', () => {
 
   it('append', () => {
     fc.assert(
-      fc.property(fc.array(fcAnything()), fcAnything(), (as, a) =>
+      fc.property(fc.array(fc.anything()), fc.anything(), (as, a) =>
         getArrayEq(fromEquals(JSONEqual)).equals(R.append(a, as), FR.append(a, as))
       )
     );
@@ -89,7 +84,7 @@ describe('fp-ts-ramda', () => {
 
   it('takeLast', () => {
     fc.assert(
-      fc.property(fc.array(fcAnything()), fc.nat(), (as, a) =>
+      fc.property(fc.array(fc.anything()), fc.nat(), (as, a) =>
         getArrayEq(fromEquals(JSONEqual)).equals(R.takeLast(a, as), FR.takeLast(a, as))
       )
     );
@@ -99,8 +94,8 @@ describe('fp-ts-ramda', () => {
     const endsWith = FR.endsWith(fromEquals(JSONEqual));
     fc.assert(
       fc.property(
-        fc.array(fcAnything()),
-        fc.array(fcAnything()),
+        fc.array(fc.anything()),
+        fc.array(fc.anything()),
         (suffix, as) =>
           R.endsWith(suffix, as) === endsWith(suffix, as) && R.endsWith(suffix)(as) === endsWith(suffix)(as)
       )
@@ -149,8 +144,8 @@ describe('fp-ts-ramda', () => {
   it('defaultTo', () => {
     fc.assert(
       fc.property(
-        fcAnything().filter(v => !isNaN(v as any)),
-        fcAnything().filter(v => v != null && !isNaN(v as any)),
+        fc.anything().filter(v => !isNaN(v as any)),
+        fc.anything().filter(v => v != null && !isNaN(v as any)),
         (value, d) => R.defaultTo(d, value) === FR.defaultTo(d, value)
       )
     );
@@ -328,7 +323,7 @@ describe('fp-ts-ramda', () => {
     fc.assert(
       fc.property(
         fc.string(),
-        fcAnything(),
+        fc.anything(),
         (x, y) => JSONEqual(R.objOf(x, y), FR.objOf(x, y)) && JSONEqual(R.objOf(x)(y), FR.objOf(x)(y))
       ),
       {
