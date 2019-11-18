@@ -17,3 +17,4 @@ export * from './any';
 export * from './all';
 export * from './equals';
 export * from './objOf';
+export * from './add';
