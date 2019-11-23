@@ -133,3 +133,8 @@ FR.equals(eqNumber)('', 0); // $ExpectError
 FR.objOf('key', 5); // $ExpectType Record<"key", number>
 FR.objOf('key')(5); // $ExpectType Record<"key", number>
 FR.objOf('key'); // $ExpectType <T>(a: T) => Record<"key", T>
+
+// add
+FR.add(5); // $ExpectType Endomorphism<number>
+FR.add(5)(5); // $ExpectType number
+FR.add(5, 5); // $ExpectType number

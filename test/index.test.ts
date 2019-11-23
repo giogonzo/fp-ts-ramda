@@ -331,4 +331,16 @@ describe('fp-ts-ramda', () => {
       }
     );
   });
+  it('add', () => {
+    fc.assert(
+      fc.property(
+        fc.integer(),
+        fc.integer(),
+        (x, y) => eqNumber.equals(R.add(x, y), FR.add(x, y)) && eqNumber.equals(R.add(x)(y), FR.add(x)(y))
+      ),
+      {
+        examples: [[0, 0]]
+      }
+    );
+  });
 });
