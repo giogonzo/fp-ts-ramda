@@ -216,20 +216,8 @@ describe('fp-ts-ramda', () => {
         ),
         as =>
           eqBoolean.equals(
-            R.any(
-              R.pipe(
-                R.prop('firstName'),
-                isCapitalized
-              ),
-              as
-            ),
-            FR.any(
-              flow(
-                FR.prop('firstName'),
-                isCapitalized
-              ),
-              as
-            )
+            R.any(R.pipe(R.prop('firstName'), isCapitalized), as),
+            FR.any(flow(FR.prop('firstName'), isCapitalized), as)
           )
       ),
       { examples: [[[]]] }
@@ -254,20 +242,8 @@ describe('fp-ts-ramda', () => {
         ),
         as =>
           eqBoolean.equals(
-            R.all(
-              R.pipe(
-                R.prop('firstName'),
-                isCapitalized
-              ),
-              as
-            ),
-            FR.all(
-              flow(
-                FR.prop('firstName'),
-                isCapitalized
-              ),
-              as
-            )
+            R.all(R.pipe(R.prop('firstName'), isCapitalized), as),
+            FR.all(flow(FR.prop('firstName'), isCapitalized), as)
           )
       ),
       { examples: [[[]]] }

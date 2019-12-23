@@ -7,14 +7,17 @@ import { eqNumber } from 'fp-ts/lib/Eq';
 
 FR.fromPairs([]); // $ExpectType Record<string, unknown>
 
+// $ExpectType { [index: string]: number; }
 R.fromPairs([
   ['a', 1],
   ['b', 2]
-]); // $ExpectType { [index: string]: number; }
+]);
+
+// $ExpectType Record<"a" | "b", number>
 FR.fromPairs([
   ['a', 1],
   ['b', 2]
-]); // $ExpectType Record<"a" | "b", number>
+]);
 
 // toPairs
 
