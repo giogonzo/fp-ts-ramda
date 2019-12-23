@@ -1,6 +1,6 @@
 ---
 title: shared/monoidAllFoldMap.ts
-nav_order: 17
+nav_order: 19
 parent: Modules
 ---
 
@@ -8,14 +8,4 @@ parent: Modules
 
 <h2 class="text-delta">Table of contents</h2>
 
-- [monoidAllFoldMap (constant)](#monoidallfoldmap-constant)
-
 ---
-
-# monoidAllFoldMap (constant)
-
-**Signature**
-
-```ts
-export const monoidAllFoldMap = ...
-```
