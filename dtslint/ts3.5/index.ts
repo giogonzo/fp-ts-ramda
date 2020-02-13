@@ -147,3 +147,8 @@ FR.objOf('key'); // $ExpectType <T>(a: T) => Record<"key", T>
 FR.add(5); // $ExpectType Endomorphism<number>
 FR.add(5)(5); // $ExpectType number
 FR.add(5, 5); // $ExpectType number
+
+// applyTo
+FR.applyTo(42); // $ExpectType <B>(fab: (a: number) => B) => B
+FR.applyTo(42)(String); // $ExpectType string
+FR.applyTo(42, String); // $ExpectType string
