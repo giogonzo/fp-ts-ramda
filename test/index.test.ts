@@ -169,6 +169,7 @@ describe('fp-ts-ramda', () => {
       )
     );
   });
+
   it('allPass', () => {
     const odd = (n: number) => n % 2 !== 0;
     const lt20 = (n: number) => n < 20;
@@ -183,6 +184,7 @@ describe('fp-ts-ramda', () => {
       { examples: [[0]] }
     );
   });
+
   it('anyPass', () => {
     const odd = (n: number) => n % 2 !== 0;
     const lt20 = (n: number) => n < 20;
@@ -197,6 +199,7 @@ describe('fp-ts-ramda', () => {
       { examples: [[0]] }
     );
   });
+
   it('any', () => {
     const odd = (n: number) => n % 2 !== 0;
     const isCapitalized = (str: string) => (str.length ? /[A-Z]/.test(str[0]) : false);
@@ -223,6 +226,7 @@ describe('fp-ts-ramda', () => {
       { examples: [[[]]] }
     );
   });
+
   it('all', () => {
     const odd = (n: number) => n % 2 !== 0;
     const isCapitalized = (str: string) => (str.length ? /[A-Z]/.test(str[0]) : false);
@@ -249,6 +253,7 @@ describe('fp-ts-ramda', () => {
       { examples: [[[]]] }
     );
   });
+
   it('equals', () => {
     fc.assert(
       fc.property(
@@ -295,6 +300,7 @@ describe('fp-ts-ramda', () => {
       }
     );
   });
+
   it('objOf', () => {
     fc.assert(
       fc.property(
@@ -307,6 +313,7 @@ describe('fp-ts-ramda', () => {
       }
     );
   });
+
   it('add', () => {
     fc.assert(
       fc.property(
@@ -317,6 +324,17 @@ describe('fp-ts-ramda', () => {
       {
         examples: [[0, 0]]
       }
+    );
+  });
+
+  it('applyTo', () => {
+    fc.assert(
+      fc.property(
+        fc.array(fc.integer()),
+        xs =>
+          eqNumber.equals(R.applyTo(xs, R.sum), FR.applyTo(xs, R.sum)) &&
+          eqNumber.equals(R.applyTo(xs)(R.sum), FR.applyTo(xs)(R.sum))
+      )
     );
   });
 });

@@ -18,3 +18,4 @@ export * from './all';
 export * from './equals';
 export * from './objOf';
 export * from './add';
+export * from './applyTo';
