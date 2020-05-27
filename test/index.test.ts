@@ -1,7 +1,7 @@
 import * as fc from 'fast-check';
 import { getEq, getEq as getArrayEq } from 'fp-ts/lib/Array';
 import { eqBoolean, eqNumber, eqString, fromEquals, getStructEq, strictEqual } from 'fp-ts/lib/Eq';
-import { flow } from 'fp-ts/lib/function';
+import { constant, flow } from 'fp-ts/lib/function';
 import { Ord, ordDate, ordNumber, ordString } from 'fp-ts/lib/Ord';
 import { getEq as getRecordEq } from 'fp-ts/lib/Record';
 import * as R from 'ramda';
@@ -16,6 +16,17 @@ describe('fp-ts-ramda', () => {
     fc.assert(
       fc.property(fc.array(fc.tuple(fc.string(), fc.anything())), as =>
         getRecordEq(fromEquals(JSONEqual)).equals(FR.fromPairs(as), R.fromPairs(as))
+      )
+    );
+  });
+
+  it('ifElse', () => {
+    const predicate = constant(true);
+    const ifFalse = constant('');
+    fc.assert(
+      fc.property(
+        fc.string(),
+        as => FR.ifElse(predicate, constant(as), ifFalse, as) === R.ifElse(predicate, constant(as), ifFalse)(as)
       )
     );
   });
