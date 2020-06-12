@@ -18,18 +18,38 @@ function _ifElse<A, R>(predicate: (a: A) => boolean, whenTrue: (a: A) => R, when
  *
  * @since 0.1.7
  */
-
-export function ifElse<A, R>(predicate: (a: A) => boolean, whenTrue: (a: A) => R, whenFalse: (a: A) => R): (a: A) => R;
-export function ifElse<A, R>(predicate: (a: A) => boolean, whenTrue: (a: A) => R, whenFalse: (a: A) => R, a: A): R;
 export function ifElse<A, R>(
   predicate: (a: A) => boolean,
-  whenTrue: (a: A) => R,
-  whenFalse: (a: A) => R,
+  whenTrue?: (a: A) => R,
+  whenFalse?: (a: A) => R,
   a?: A
-): R | ((a: A) => R) {
-  if (a === undefined) {
-    return (a: A) => _ifElse(predicate, whenTrue, whenFalse, a);
-  } else {
-    return _ifElse(predicate, whenTrue, whenFalse, a);
-  }
+): {
+  (whenTrue: (a: A) => R): {
+    (whenFalse: (a: A) => R): (x: A) => R;
+    (whenFalse: (a: A) => R, x: A): R;
+  };
+  (whenTrue: (a: A) => R, whenFalse: (a: A) => R): (x: A) => R;
+  (whenTrue: (a: A) => R, whenFalse: (a: A) => R, x: A): R;
+};
+export function ifElse<A, R>(
+  predicate: (a: A) => boolean
+): (whenTrue: (a: A) => R, whenFalse?: (a: A) => R, x?: A) => any {
+  return (whenTrue: (a: A) => R, ...args: [((a: A) => R)?, A?]) => {
+    if (args.length === 0) {
+      return (whenFalse: (a: A) => R, ...args: [A?]) => {
+        if (args.length === 0) {
+          return (x: A) => {
+            return _ifElse(predicate, whenTrue, whenFalse, x);
+          };
+        }
+        return _ifElse(predicate, whenTrue, whenFalse, args[0]!);
+      };
+    }
+    if (args.length === 1) {
+      return (x: A) => {
+        return _ifElse(predicate, whenTrue, args[0]!, x);
+      };
+    }
+    return _ifElse(predicate, whenTrue, args[0]!, args[1]!);
+  };
 }
